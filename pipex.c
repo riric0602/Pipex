@@ -41,11 +41,12 @@ static void	ft_exec_cmd(char *argv, char **path)
 	char	**cmd_options;
 
 	i = -1;
+	cmd = NULL;
 	if (!path)
 	{
 		cmd_options = ft_split(argv, ' ');
 		if (access(cmd_options[0], X_OK) == 0)
-			if (execve(NULL, cmd_options, NULL) == -1)
+			if (execve(cmd, cmd_options, NULL) == -1)
 				exit(EXIT_FAILURE);
 	}
 	else
